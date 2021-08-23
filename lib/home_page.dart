@@ -13,6 +13,30 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+                currentAccountPicture: Image.asset("assets/logo.png"),
+                accountName: Text("Bruno"),
+                accountEmail: Text("Bruno@email.com")),
+            ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Inicio"),
+                subtitle: Text("Tela de inicio"),
+                onTap: () {
+                  print("Home");
+                }),
+            ListTile(
+                leading: Icon(Icons.logout),
+                title: Text("Sair"),
+                subtitle: Text("Tela de Login"),
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed("/");
+                })
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text("Meu App"),
         actions: [CustomSwitch()],
