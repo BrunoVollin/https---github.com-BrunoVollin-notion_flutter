@@ -1,4 +1,7 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'app_controll.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,29 +15,40 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Meu App"),
+        actions: [CustomSwitch()],
       ),
-      body: Center(
-        child: GestureDetector(
-          child: Text(
-            'Contador: $counter',
-            textAlign: TextAlign.center,
-          ),
-          onTap: () {
-            setState(() {
-              counter++;
-            });
-            print('Contador: $counter');
-          },
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          children: [
+            Text(
+              '$counter',
+              style: TextStyle(fontSize: 100),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    counter++;
+                  });
+                },
+                child: Icon(Icons.add))
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-        },
-      ),
+    );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: AppControll.instance.isDarkTheme,
+      onChanged: (value) {
+        print(value);
+        AppControll.instance.changeTheme();
+      },
     );
   }
 }
