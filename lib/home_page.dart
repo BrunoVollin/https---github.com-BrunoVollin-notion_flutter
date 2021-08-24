@@ -17,9 +17,13 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-                currentAccountPicture: Image.asset("assets/logo.png"),
-                accountName: Text("Bruno"),
-                accountEmail: Text("Bruno@email.com")),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.asset("assets/logo.png"),
+              ),
+              accountName: Text("Bruno"),
+              accountEmail: Text("Bruno@email.com"),
+            ),
             ListTile(
                 leading: Icon(Icons.home),
                 title: Text("Inicio"),
