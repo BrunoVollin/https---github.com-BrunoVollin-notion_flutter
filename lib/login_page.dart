@@ -46,24 +46,48 @@ class _LoginPageState extends State<LoginPage> {
                 child: Image.asset("assets/logo.png"),
               ),
               SizedBox(height: 50),
-              TextField(
-                onChanged: (text) {
-                  email = text;
-                },
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Email'),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                onChanged: (text) {
-                  password = text;
-                },
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Password'),
-              ),
-              ElevatedButton(onPressed: onPressed, child: Text("Entrar"))
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 10, top: 20, right: 10, bottom: 20),
+                  child: Column(
+                    children: [
+                      TextField(
+                        onChanged: (text) {
+                          email = text;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Email',
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextField(
+                        onChanged: (text) {
+                          password = text;
+                        },
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Password',
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: onPressed,
+                        style: ElevatedButton.styleFrom(primary: Colors.blue),
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(
+                            "Entrar",
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
